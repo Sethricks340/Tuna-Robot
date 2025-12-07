@@ -1,0 +1,20 @@
+# Raspberry Pi 4 USB Camera Setup – Working Steps
+
+# 1. Connect the USB Camera to the Raspberry Pi.
+
+# 2. Verify camera detection:
+v4l2-ctl --list-devices
+# Output should show /dev/video0 and /dev/video1 (video devices) plus any microphone devices like /dev/media4.
+
+# 3. Install necessary tools:
+sudo apt update
+sudo apt install fswebcam mpv
+
+# 4. Capture a test image:
+fswebcam -d /dev/video0 -r 1280x720 --no-banner test2.jpg
+# Verify test2.jpg saved and view it:
+xdg-open test2.jpg
+
+# 5. Test local live video:
+mpv /dev/video0
+# This opens a live feed from the USB camera on the Pi.
